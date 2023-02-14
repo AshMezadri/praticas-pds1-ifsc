@@ -8,6 +8,11 @@ public class FuncionarioDAO {
 
 	private static ArrayList<Funcionarios> listaFuncionarios;
 	
+	public static FuncionarioDAO getInstancia() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public FuncionarioDAO() {
 		listaFuncionarios = new ArrayList<>();
 	}
@@ -20,4 +25,6 @@ public class FuncionarioDAO {
 	public ArrayList<Funcionarios> listar(){
 		return listaFuncionarios;
 	}
+
+	
 }

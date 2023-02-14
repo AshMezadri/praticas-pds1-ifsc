@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Funcionarios extends Pessoa{
+public class Funcionarios extends Pessoa{
 
 	private Long cpf;
 
