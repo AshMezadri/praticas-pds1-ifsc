@@ -1,0 +1,13 @@
+
+QUESTÕES CONCEITUAIS
+
+1- Biblioteca é o código fonte compilado externo que possibilita adicionar novas funções ao código fonte do software
+
+2- Swing é uma biblioteca usada para criar interfaces gráficas
+
+3.a)JButton
+  b)JTextFild
+  c)JCheckBox
+  d)JProgressBar
+  e)JRadioButton
+  f)JComboBox
