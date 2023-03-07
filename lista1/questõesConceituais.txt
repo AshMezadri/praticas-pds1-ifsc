@@ -1,13 +1,40 @@
-
+﻿
 QUESTÕES CONCEITUAIS
 
-1- Biblioteca é o código fonte compilado externo que possibilita adicionar novas funções ao código fonte do software
+
+1- Biblioteca é o código fonte compilado externo que possibilita 
+adicionar novas funções ao código fonte do software
+
+
 
 2- Swing é uma biblioteca usada para criar interfaces gráficas
 
+
+
 3.a)JButton
-  b)JTextFild
-  c)JCheckBox
-  d)JProgressBar
-  e)JRadioButton
-  f)JComboBox
+  
+b)JTextFild
+  
+c)JCheckBox
+  
+d)JProgressBar
+  
+e)JRadioButton
+  
+f)JComboBox
+
+4-Layout é como os componentes que colocarmos nesse frame 
+vão se distribuir visualmente nele.Alguns dos layouts possíveis 
+são o Absolute, o Flow, Box. Grid, etc.
+
+5- >>Eu acho << int opcao = JOptionPane.showConfirmDialog(null, "mensagem");
+
+6- Swing -> É uma evolução do AWT ; possui uma interface gráfica mais evoluida ; componenetos do AWT + seus próprios
+
+AWT -> primeiros componentes gráficos que surgiram no java ; aparência 
+mais simples ; não há padronização das interfaces;
+
+JavaFX -> Integrar gráficos de vetor, recursos Web de animação, áudio e vídeo em uma aplicação rica, interativa e imersiva; permite o uso de qualquer biblioteca Java em uma aplicação JavaFX ; fluxo de trabalho eficiente de designer para desenvolvedor
+
+7- São objetos que ao serem configurados na aplicação, modificam o modo como o usuário irá interagir ou visualizar a interface gráfica da mesma. Alguns exemplos 
+são :  Nimbus, FlatLa, synth, 
