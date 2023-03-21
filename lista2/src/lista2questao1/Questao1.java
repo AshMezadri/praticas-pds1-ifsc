@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
@@ -21,6 +22,7 @@ public class Questao1 extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtCadastro;
 	private JTextField txtExibir;
+	private int x;
 
 	/**
 	 * Launch the application.
@@ -52,7 +54,7 @@ public class Questao1 extends JFrame {
 		contentPane.setLayout(null);
 
 		ArrayList<Float> Lista = new ArrayList<>();
-		int cont = 0;
+		x = 0;
 
 		txtCadastro = new JTextField();
 		txtCadastro.setFont(new Font("Leelawadee UI Semilight", Font.PLAIN, 12));
@@ -72,8 +74,6 @@ public class Questao1 extends JFrame {
 		lblCadastro.setFont(new Font("Leelawadee UI", Font.BOLD, 13));
 		lblCadastro.setBounds(110, 45, 69, 14);
 		contentPane.add(lblCadastro);
-		
-		float numero = Float.valueOf(txtCadastro.getText());
 
 		JLabel lblExibicao = new JLabel("Exibição números pares");
 		lblExibicao.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,6 +94,8 @@ public class Questao1 extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
+				Float numero = Float.valueOf(txtCadastro.getText());
+
 				Lista.add(numero);
 
 			}
@@ -107,9 +109,18 @@ public class Questao1 extends JFrame {
 		btnExibir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
 
+				for (Float numero : Lista) {
+
+					if (numero % 2 == 0) {
+						x++;
+						txtExibir.setText(String.valueOf(x));
+
+					}
+				}
+				System.out.println(Lista);
 			}
+
 		});
 
 	}
