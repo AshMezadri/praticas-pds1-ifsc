@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 
@@ -72,8 +73,6 @@ public class Main extends JFrame {
 		Aluno alunos = new Aluno();
 		Professor profs = new Professor();
 		
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
 		JLabel lblAluno = new JLabel("Aluno");
 		lblAluno.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 16));
 		lblAluno.setBounds(125, 10, 50, 15);
@@ -195,12 +194,12 @@ public class Main extends JFrame {
 
 				String nomeAluno = txtNomeAluno.getText();
 				Long matricula = Long.valueOf(txtMatricula.getText());
-				String birthAluno = String.valueOf(txtNascAluno.getText());
+				Date birthAluno = new SimpleDateFormat("dd/MM/yyyy").parse(txtNascAluno.getText());
 				Long cpfAluno = Long.valueOf(txtCpfAluno.getText());
 
 				alunos.setNome(nomeAluno);
 				alunos.setMatricula(matricula);
-				//alunos.setDataNasc(birthAluno);
+				alunos.setDataNasc(birthAluno);
 				alunos.setCpf(cpfAluno);
 
 				ListaAlunos.add(alunos);
