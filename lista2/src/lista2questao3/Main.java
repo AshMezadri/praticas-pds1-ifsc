@@ -7,17 +7,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
@@ -27,7 +27,7 @@ public class Main extends JFrame {
 	private JTextField txtMatricula;
 	private JTextField txtNascAluno;
 	private JTextField txtCpfAluno;
-	private JTextField txtNomeProfessor;
+	private JTextField txtNomeProf;
 	private JTextField txtSiape;
 	private JTextField txtNascProf;
 	private JTextField txtCpfProf;
@@ -67,12 +67,12 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		ArrayList<String> ListaAlunos = new ArrayList<>();
-		ArrayList<String> ListaProfs = new ArrayList<>();
+		ArrayList<Aluno> ListaAlunos = new ArrayList<>();
+		ArrayList<Professor> ListaProfs = new ArrayList<>();
 
 		Aluno alunos = new Aluno();
 		Professor profs = new Professor();
-		
+
 		JLabel lblAluno = new JLabel("Aluno");
 		lblAluno.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 16));
 		lblAluno.setBounds(125, 10, 50, 15);
@@ -136,11 +136,11 @@ public class Main extends JFrame {
 		lblCpfAluno.setBounds(55, 168, 35, 15);
 		contentPane.add(lblCpfAluno);
 
-		txtNomeProfessor = new JTextField();
-		txtNomeProfessor.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		txtNomeProfessor.setColumns(10);
-		txtNomeProfessor.setBounds(375, 45, 110, 20);
-		contentPane.add(txtNomeProfessor);
+		txtNomeProf = new JTextField();
+		txtNomeProf.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		txtNomeProf.setColumns(10);
+		txtNomeProf.setBounds(375, 45, 110, 20);
+		contentPane.add(txtNomeProf);
 
 		txtSiape = new JTextField();
 		txtSiape.setFont(new Font("Century Gothic", Font.PLAIN, 13));
@@ -192,19 +192,29 @@ public class Main extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				String nomeAluno = txtNomeAluno.getText();
-				Long matricula = Long.valueOf(txtMatricula.getText());
-				Date birthAluno = new SimpleDateFormat("dd/MM/yyyy").parse(txtNascAluno.getText());
-				Long cpfAluno = Long.valueOf(txtCpfAluno.getText());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
+				String nomeAluno = txtNomeAluno.getText();
 				alunos.setNome(nomeAluno);
-				alunos.setMatricula(matricula);
-				alunos.setDataNasc(birthAluno);
+
+				LocalDate dataAluno = LocalDate.parse(txtNascAluno.getText(), formatter);
+				alunos.setDataNasc(dataAluno);
+
+				Long cpfAluno = Long.valueOf(txtCpfAluno.getText());
 				alunos.setCpf(cpfAluno);
 
+				Long matriculaAluno = Long.valueOf(txtMatricula.getText());
+				alunos.setMatricula(matriculaAluno);
+
 				ListaAlunos.add(alunos);
+
+				JOptionPane.showMessageDialog(null, "Cadastro concluído");
+
+				txtNomeAluno.setText(null);
+				txtCpfAluno.setText(null);
+				txtNascAluno.setText(null);
+				txtMatricula.setText(null);
 			}
-			
 
 		});
 
@@ -213,6 +223,36 @@ public class Main extends JFrame {
 		btnCadastroProf.setBackground(Color.LIGHT_GRAY);
 		btnCadastroProf.setBounds(365, 220, 125, 30);
 		contentPane.add(btnCadastroProf);
+
+		btnCadastroProf.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+
+				String nomeProf = txtNomeProf.getText();
+				alunos.setNome(nomeProf);
+
+				LocalDate dataProf = LocalDate.parse(txtNascProf.getText(), formatter);
+				alunos.setDataNasc(dataProf);
+
+				Long cpfProf = Long.valueOf(txtCpfProf.getText());
+				alunos.setCpf(cpfProf);
+
+				Long siape = Long.valueOf(txtSiape.getText());
+				alunos.setMatricula(siape);
+
+				ListaProfs.add(profs);
+
+				JOptionPane.showMessageDialog(null, "Cadastro concluído");
+
+				txtNomeProf.setText(null);
+				txtSiape.setText(null);
+				txtNascProf.setText(null);
+				txtCpfProf.setText(null);
+			}
+
+		});
 
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(15, 275, 252, 2);
@@ -239,7 +279,11 @@ public class Main extends JFrame {
 		contentPane.add(btnExibirAluno);
 
 		btnExibirAluno.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
+
+				JOptionPane.showMessageDialog(null, ListaAlunos.toString());
+
 			}
 		});
 
@@ -248,6 +292,15 @@ public class Main extends JFrame {
 		btnExibirProf.setBackground(Color.LIGHT_GRAY);
 		btnExibirProf.setBounds(385, 320, 100, 30);
 		contentPane.add(btnExibirProf);
+
+		btnExibirProf.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, ListaProfs.toString());
+
+			}
+
+		});
 
 	}
 }
