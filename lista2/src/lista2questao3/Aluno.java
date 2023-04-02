@@ -12,4 +12,10 @@ public class Aluno extends Pessoa{
 		this.matricula = matricula;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nome: " + this.getNome() + " //CPF : " + this.getCpf() + " //Nascimento : " + this.getDataNasc() + " //Matricula : " + this.matricula ;
+	}
+	
 }

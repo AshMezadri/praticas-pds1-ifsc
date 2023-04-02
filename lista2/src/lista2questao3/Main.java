@@ -58,6 +58,7 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 580, 420);
 		contentPane = new JPanel();
@@ -69,9 +70,6 @@ public class Main extends JFrame {
 
 		ArrayList<Aluno> ListaAlunos = new ArrayList<>();
 		ArrayList<Professor> ListaProfs = new ArrayList<>();
-
-		Aluno alunos = new Aluno();
-		Professor profs = new Professor();
 
 		JLabel lblAluno = new JLabel("Aluno");
 		lblAluno.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 16));
@@ -192,6 +190,8 @@ public class Main extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
+				Aluno alunos = new Aluno();
+
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
 				String nomeAluno = txtNomeAluno.getText();
@@ -228,19 +228,21 @@ public class Main extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
+				Professor profs = new Professor();
+
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
 				String nomeProf = txtNomeProf.getText();
-				alunos.setNome(nomeProf);
+				profs.setNome(nomeProf);
 
 				LocalDate dataProf = LocalDate.parse(txtNascProf.getText(), formatter);
-				alunos.setDataNasc(dataProf);
+				profs.setDataNasc(dataProf);
 
 				Long cpfProf = Long.valueOf(txtCpfProf.getText());
-				alunos.setCpf(cpfProf);
+				profs.setCpf(cpfProf);
 
 				Long siape = Long.valueOf(txtSiape.getText());
-				alunos.setMatricula(siape);
+				profs.setSiape(siape);
 
 				ListaProfs.add(profs);
 
